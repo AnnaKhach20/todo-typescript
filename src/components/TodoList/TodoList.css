@@ -1,0 +1,29 @@
+.todo-list-container {
+    margin: 1.5rem 0;
+}
+
+.todo-items-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    list-style: none;
+}
+
+/* Scrollbar styling */
+.todo-items-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.todo-items-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.todo-items-list::-webkit-scrollbar-thumb {
+    background: #ff6b6b;
+    border-radius: 10px;
+}
+
+.todo-items-list::-webkit-scrollbar-thumb:hover {
+    background: #ff5252;
+}

@@ -1,0 +1,16 @@
+.todo-app-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #343a40;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+    .todo-app-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}

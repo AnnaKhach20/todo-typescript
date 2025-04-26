@@ -1,0 +1,28 @@
+.todo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 2px solid #ff6b6b;
+    margin-top: 1rem;
+}
+
+.todo-counter {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.todo-clear-button {
+    padding: 0.6rem 1.2rem;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.todo-clear-button:hover {
+    background-color: #ff5252;
+}
