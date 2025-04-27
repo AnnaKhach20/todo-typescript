@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { TodoItemProps } from '../../types/todoTypes';
 import { FiEdit, FiTrash2, FiCheck } from 'react-icons/fi';
 import './TodoItem.css';

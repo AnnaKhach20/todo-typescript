@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Todo } from './types/todoTypes';
 import axios from 'axios';
 import { TodoHeader, TodoList, TodoFooter } from './components';
+import React from 'react';
 import './App.css';
 
 const TodoApp = () => {

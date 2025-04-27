@@ -1,5 +1,6 @@
 import { TodoListProps } from '../../types/todoTypes';
 import TodoItem from '../TodoItem/TodoItem';
+import React from 'react';
 import './TodoList.css';
 
 const TodoList = ({ todoItems, toggleCompletion, updateTask, deleteTask }: TodoListProps) => {

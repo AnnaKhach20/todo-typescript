@@ -1,3 +1,4 @@
+import React from 'react';
 import { TodoFooterProps } from '../../types/todoTypes';
 import './TodoFooter.css';
 
