@@ -1,72 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Todo } from './types/todoTypes';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { TodoHeader, TodoList, TodoFooter } from './components';
-import React from 'react';
+import { RootState, AppDispatch } from './store/store';
+import { setTodos } from './store/todoSlice';
 import './App.css';
+import React from 'react';
 
 const TodoApp = () => {
-    const [todos, setTodos] = useState<Todo[]>([]);
+  const todos = useSelector((state: RootState) => state.todos.todos);
+  const dispatch = useDispatch<AppDispatch>();
 
-    useEffect(() => {
-        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=15")
-            .then((res) => {
-                const fetchedTodos = res.data.map((todo: any) => ({
-                    userId: todo.userId,
-                    id: todo.id,
-                    task: todo.title,
-                    isCompleted: todo.completed
-                }));
-                setTodos(fetchedTodos);
-            });
-    }, []);
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/todos?_limit=15")
+      .then((res) => {
+        const fetchedTodos = res.data.map((todo: any) => ({
+          userId: todo.userId,
+          id: todo.id,
+          task: todo.title,
+          isCompleted: todo.completed
+        }));
+        dispatch(setTodos(fetchedTodos));
+      });
+  }, [dispatch]);
 
-    const addNewTask = (taskTitle: string) => {
-        setTodos(prev => [
-            ...prev,
-            {
-                id: Date.now(),
-                task: taskTitle,
-                isCompleted: false
-            }
-        ]);
-    };
-
-    const toggleCompletion = (id: number, isCompleted: boolean) => {
-        setTodos(todos.map(todo => 
-            todo.id === id ? { ...todo, isCompleted } : todo
-        ));
-    };
-
-    const updateTask = (id: number, updatedTask: string) => {
-        setTodos(todos.map(todo => 
-            todo.id === id ? { ...todo, task: updatedTask } : todo
-        ));
-    };
-
-    const deleteTask = (id: number) => {
-        setTodos(todos.filter(todo => todo.id !== id));
-    };
-
-    const clearCompleted = () => {
-        setTodos(todos.filter(todo => !todo.isCompleted));
-    };
-
-    return (
-        <div className="todo-app-container">
-            <TodoHeader addNewTask={addNewTask} />
-            <TodoList 
-                todoItems={todos} 
-                toggleCompletion={toggleCompletion}
-                updateTask={updateTask}
-                deleteTask={deleteTask}
-            />
-            <TodoFooter 
-                todoItems={todos} 
-                clearCompleted={clearCompleted} 
-            />
-        </div>
-    );
+  return (
+    <div className="todo-app-container">{}
+      <TodoHeader />
+      <TodoList />
+      <TodoFooter />
+    </div>
+  );
 };
 
 export default TodoApp;

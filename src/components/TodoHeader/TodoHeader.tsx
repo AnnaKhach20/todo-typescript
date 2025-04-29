@@ -1,15 +1,16 @@
-import React from 'react';
-import { useState } from 'react';
-import { TodoHeaderProps } from '../../types/todoTypes';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../store/todoSlice';
 import './TodoHeader.css';
 
-const TodoHeader = ({ addNewTask }: TodoHeaderProps) => {
+const TodoHeader = () => {
     const [taskInput, setTaskInput] = useState<string>("");
+    const dispatch = useDispatch();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (taskInput.trim()) {
-            addNewTask(taskInput);
+            dispatch(addTodo(taskInput));
             setTaskInput("");
         }
     };

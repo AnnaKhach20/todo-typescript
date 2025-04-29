@@ -1,23 +1,22 @@
 import { useState } from 'react';
-import React from 'react';
-import { TodoItemProps } from '../../types/todoTypes';
+import { useDispatch } from 'react-redux';
 import { FiEdit, FiTrash2, FiCheck } from 'react-icons/fi';
+import { toggleTodo, updateTodo, deleteTodo } from '../../store/todoSlice';
 import './TodoItem.css';
+import React from 'react';
 
 const TodoItem = ({
     id,
     task,
     isCompleted,
-    toggleCompletion,
-    updateTask,
-    deleteTask,
-}: TodoItemProps) => {
+}: { id: number, task: string, isCompleted: boolean }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedTask, setEditedTask] = useState(task);
+    const dispatch = useDispatch();
 
     const handleUpdate = () => {
         if (editedTask.trim()) {
-            updateTask(id, editedTask);
+            dispatch(updateTodo({ id, task: editedTask }));
             setIsEditing(false);
         }
     };
@@ -28,7 +27,7 @@ const TodoItem = ({
                 <input
                     type="checkbox"
                     checked={isCompleted}
-                    onChange={() => toggleCompletion(id, !isCompleted)}
+                    onChange={() => dispatch(toggleTodo({ id, isCompleted: !isCompleted }))}
                     className="todo-checkbox"
                 />
                 {isEditing ? (
@@ -63,7 +62,7 @@ const TodoItem = ({
                     </button>
                 )}
                 <button
-                    onClick={() => deleteTask(id)}
+                    onClick={() => dispatch(deleteTodo(id))}
                     className="todo-action-button delete"
                 >
                     <FiTrash2 />

@@ -5,24 +5,24 @@ export interface Todo {
     isCompleted: boolean;
 }
 
-export interface TodoHeaderProps {
-    addNewTask: (taskTitle: string) => void;
-}
+// export interface TodoHeaderProps {
+//     addNewTask: (taskTitle: string) => void;
+// }
 
-export interface TodoListProps {
-    todoItems?: Todo[];
-    toggleCompletion: (id: number, isCompleted: boolean) => void;
-    updateTask: (id: number, updatedTask: string) => void;
-    deleteTask: (id: number) => void;
-}
+// export interface TodoListProps {
+//     todoItems?: Todo[];
+//     toggleCompletion: (id: number, isCompleted: boolean) => void;
+//     updateTask: (id: number, updatedTask: string) => void;
+//     deleteTask: (id: number) => void;
+// }
 
-export interface TodoItemProps extends Todo {
-    toggleCompletion: (id: number, isCompleted: boolean) => void;
-    updateTask: (id: number, updatedTask: string) => void;
-    deleteTask: (id: number) => void;
-}
+// export interface TodoItemProps extends Todo {
+//     toggleCompletion: (id: number, isCompleted: boolean) => void;
+//     updateTask: (id: number, updatedTask: string) => void;
+//     deleteTask: (id: number) => void;
+// }
 
-export interface TodoFooterProps {
-    todoItems: Todo[];
-    clearCompleted: () => void;
-}
+// export interface TodoFooterProps {
+//     todoItems: Todo[];
+//     clearCompleted: () => void;
+// }

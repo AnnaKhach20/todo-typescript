@@ -1,19 +1,19 @@
-import { TodoListProps } from '../../types/todoTypes';
+import { useSelector } from 'react-redux';
 import TodoItem from '../TodoItem/TodoItem';
+import { RootState } from '../../store/store';
 import React from 'react';
 import './TodoList.css';
 
-const TodoList = ({ todoItems, toggleCompletion, updateTask, deleteTask }: TodoListProps) => {
+const TodoList = () => {
+    const todos = useSelector((state: RootState) => state.todos.todos);
+
     return (
         <section className="todo-list-container">
             <ul className="todo-items-list">
-                {todoItems?.map((todo) => (
+                {todos?.map((todo) => (
                     <TodoItem
                         key={todo.id}
                         {...todo}
-                        toggleCompletion={toggleCompletion}
-                        updateTask={updateTask}
-                        deleteTask={deleteTask}
                     />
                 ))}
             </ul>
